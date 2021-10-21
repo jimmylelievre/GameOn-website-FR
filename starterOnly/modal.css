@@ -231,6 +231,36 @@ input {
   border: 0.8px solid #ccc;
   outline: none;
 }
+.error-name {
+  display: none;
+  font-size: 12px;
+  color: #e54858;
+}
+.error-last {
+  display: none;
+  font-size: 12px;
+  color: #e54858;
+}
+.error-email {
+  display: none;
+  font-size: 12px;
+  color: #e54858;
+}
+.error-birthdate {
+  display: none;
+  font-size: 12px;
+  color: #e54858;
+}
+.error-quantity {
+  display: none;
+  font-size: 12px;
+  color: #e54858;
+}
+.error-checkbox {
+  display: none;
+  font-size: 12px;
+  color: #e54858;
+}
 .text-control {
   margin: 0;
   padding: 8px;

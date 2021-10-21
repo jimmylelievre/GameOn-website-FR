@@ -72,6 +72,7 @@
                   minlength="2"
                 /><br>
               </div>
+              <p class="error-name">Veuillez entrer 2 caractères ou plus pour le champ du prénom.</p>
               <div
                 class="formData">
                 <label for="last">Nom</label><br>
@@ -82,6 +83,7 @@
                   name="last"
                 /><br>
               </div>
+              <p class="error-last">Veuillez entrer 2 caractères ou plus pour le champ du nom.</p>
               <div
                 class="formData">
                 <label for="email">E-mail</label><br>
@@ -92,6 +94,7 @@
                   name="email"
                 /><br>
               </div>
+              <p class="error-email">"Veuillez entrer une adresse email valide.</p>
               <div
                 class="formData">
                 <label for="birthdate">Date de naissance</label><br>
@@ -102,11 +105,13 @@
                   name="birthdate"
                 /><br>
               </div>
+              <p class="error-birthdate">"Veuillez entrer une date de naissance respectant le format JJ/MM/AAAA.</p>
               <div
                 class="formData">
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
               </div>
+              <p class="error-quantity">Veuillez entrer un nombre valide.</p>
               <p class="text-label">Quelles villes ?</p>
               <div
                 class="formData">
@@ -116,6 +121,7 @@
                   id="location1"
                   name="location"
                   value="New York"
+                  checked
                 />
                 <label class="checkbox-label" for="location1">
                   <span class="checkbox-icon"></span>
@@ -172,11 +178,12 @@
                   name="location"
                   value="Portland"
                 />
-                <label class="checkbox-label" for="location6">
+                <label class="checkbox-label" for="location6" >
                   <span class="checkbox-icon"></span>
                   Portland</label
                 >
               </div>
+              
 
               <div
                 class="formData">
@@ -184,6 +191,7 @@
                   class="checkbox-input"
                   type="checkbox"
                   id="checkbox1"
+                  value="checked" 
                   checked
                 />
                 <label class="checkbox2-label" for="checkbox1" required>
@@ -198,6 +206,7 @@
                 </label>
                 <br>
               </div>
+              <p class="error-checkbox">Veuillez accepter les conditions d'utilisations.</p>
               <input
                 class="btn-submit"
                 type="submit"

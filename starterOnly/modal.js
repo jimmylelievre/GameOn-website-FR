@@ -9,9 +9,10 @@ function editNav() {
 
 // DOM Elements
 const modalbg = document.querySelector(".bground");
+const modalbgThanks = document.querySelector(".bground-thanks");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
-const closeForm = document.querySelector(".close");
+const closeForm = document.querySelectorAll(".closed");
 const inputName = document.querySelector("[name='first']");
 const inputLastName = document.querySelector("[name='last']");
 const form = document.querySelector("[name='reserve']");
@@ -25,14 +26,17 @@ const errorEmail = document.querySelector(".error-email");
 const errorQuantity = document.querySelector(".error-quantity");
 const errorBirth = document.querySelector(".error-birthdate");
 const errorCheckbox = document.querySelector(".error-checkbox");
-console.log(inputCheckbox);
+
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // Close the form
-closeForm.addEventListener("click", () => {
+closeForm.forEach((btn) => btn.addEventListener("click", closeModal));
+
+function closeModal() {
   modalbg.style.display = "none";
-});
+  modalbgThanks.style.display = "none";
+}
 
 // launch modal form
 function launchModal() {
@@ -129,8 +133,10 @@ function validate() {}
 
 form.addEventListener("submit", function (e) {
   e.preventDefault();
-  if (prenom && lastName && quantity && birth) {
+  if (prenom && lastName && quantity && birth && check) {
     alert("C'est ok !");
+    modalbg.style.display = "none";
+    modalbgThanks.style.display = "block";
   } else {
     alert("remplir tous les champs !");
   }

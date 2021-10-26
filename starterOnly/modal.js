@@ -139,5 +139,6 @@ form.addEventListener("submit", function (e) {
     modalbgThanks.style.display = "block";
   } else {
     alert("remplir tous les champs !");
+    errorCheckbox.style.display = "block";
   }
 });

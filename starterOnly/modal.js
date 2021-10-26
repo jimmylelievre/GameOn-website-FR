@@ -20,13 +20,15 @@ const inputQuantity = document.querySelector("[name='quantity']");
 const inputBirth = document.querySelector("[name='birthdate']");
 const inputEmail = document.querySelector("[name='email']");
 const inputCheckbox = document.querySelector("input[value='checked']");
+const radioCity = document.querySelectorAll("input[type='radio']");
 const errorName = document.querySelector(".error-name");
 const errorLast = document.querySelector(".error-last");
 const errorEmail = document.querySelector(".error-email");
 const errorQuantity = document.querySelector(".error-quantity");
 const errorBirth = document.querySelector(".error-birthdate");
+const errorCity = document.querySelector(".error-city");
 const errorCheckbox = document.querySelector(".error-checkbox");
-
+console.log(radioCity);
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -114,6 +116,21 @@ inputQuantity.addEventListener("input", (e) => {
   }
 });
 
+// Vérifier les villes
+let city = false;
+radioCity.forEach((btn) => btn.addEventListener("click", cityError));
+function cityError() {
+  if (radioCity.checked) {
+    console.log("pas ok");
+    city = true;
+    errorCity.style.display = "block";
+  } else {
+    console.log(" ok");
+    city = false;
+    errorCity.style.display = "none";
+  }
+}
+
 // Vérifier la checkbox
 let check = false;
 inputCheckbox.addEventListener("click", () => {
@@ -133,12 +150,18 @@ function validate() {}
 
 form.addEventListener("submit", function (e) {
   e.preventDefault();
-  if (prenom && lastName && quantity && birth && check) {
+  if (prenom && lastName && quantity && birth && check && city) {
     alert("C'est ok !");
     modalbg.style.display = "none";
     modalbgThanks.style.display = "block";
   } else {
     alert("remplir tous les champs !");
     errorCheckbox.style.display = "block";
+    errorCity.style.display = "block";
+    errorQuantity.style.display = "block";
+    errorBirth.style.display = "block";
+    errorEmail.style.display = "block";
+    errorLast.style.display = "block";
+    errorName.style.display = "block";
   }
 });

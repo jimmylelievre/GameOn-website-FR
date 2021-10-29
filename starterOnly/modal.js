@@ -28,7 +28,7 @@ const errorQuantity = document.querySelector(".error-quantity");
 const errorBirth = document.querySelector(".error-birthdate");
 const errorCity = document.querySelector(".error-city");
 const errorCheckbox = document.querySelector(".error-checkbox");
-console.log(radioCity);
+
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -122,11 +122,11 @@ radioCity.forEach((btn) => btn.addEventListener("click", cityError));
 function cityError() {
   if (radioCity.checked) {
     console.log("pas ok");
-    city = true;
+    city = false;
     errorCity.style.display = "block";
   } else {
     console.log(" ok");
-    city = false;
+    city = true;
     errorCity.style.display = "none";
   }
 }
@@ -156,12 +156,5 @@ form.addEventListener("submit", function (e) {
     modalbgThanks.style.display = "block";
   } else {
     alert("remplir tous les champs !");
-    errorCheckbox.style.display = "block";
-    errorCity.style.display = "block";
-    errorQuantity.style.display = "block";
-    errorBirth.style.display = "block";
-    errorEmail.style.display = "block";
-    errorLast.style.display = "block";
-    errorName.style.display = "block";
   }
 });

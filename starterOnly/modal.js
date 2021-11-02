@@ -1,3 +1,4 @@
+// Affichage du responsive du menu
 function editNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
@@ -7,12 +8,23 @@ function editNav() {
   }
 }
 
+// Affichage erreur pour chaque element
+function toggleElement(key, predicat) {
+  let display = predicat ? "none" : "block";
+  formProperties[key].element.style.display = display;
+  formProperties[key].display = predicat;
+}
+
 // DOM Elements
+
+// Modals
 const modalbg = document.querySelector(".bground");
 const modalbgThanks = document.querySelector(".bground-thanks");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeForm = document.querySelectorAll(".closed");
+
+// input
 const inputName = document.querySelector("[name='first']");
 const inputLastName = document.querySelector("[name='last']");
 const form = document.querySelector("[name='reserve']");
@@ -21,6 +33,8 @@ const inputBirth = document.querySelector("[name='birthdate']");
 const inputEmail = document.querySelector("[name='email']");
 const inputCheckbox = document.querySelector("input[value='checked']");
 const radioCity = document.querySelectorAll("input[type='radio']");
+
+// error messages
 const errorName = document.querySelector(".error-name");
 const errorLast = document.querySelector(".error-last");
 const errorEmail = document.querySelector(".error-email");
@@ -28,6 +42,25 @@ const errorQuantity = document.querySelector(".error-quantity");
 const errorBirth = document.querySelector(".error-birthdate");
 const errorCity = document.querySelector(".error-city");
 const errorCheckbox = document.querySelector(".error-checkbox");
+
+// Properties for the form
+let formProperties = {
+  prenom: { element: errorName, display: false },
+  lastName: { element: errorLast, display: false },
+  mail: { element: errorEmail, display: false },
+  birthday: { element: errorBirth, display: false },
+  quantity: { element: errorQuantity, display: false },
+  city: { element: errorCity, display: false },
+  checkbox: { element: errorCheckbox, display: false },
+};
+// verification pour le submit
+let prenom = false;
+let lastName = false;
+let mail = false;
+let birth = false;
+let quantity = false;
+let city = false;
+let checkbox = false;
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -45,116 +78,95 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
-// Verifier le prénom
-let prenom = false;
+// verification prenom
 inputName.addEventListener("input", (e) => {
-  if (e.target.value.length >= 2) {
+  predicat = e.target.value.length >= 2;
+  toggleElement("prenom", predicat);
+
+  if (predicat) {
     prenom = true;
-    console.log("ok !");
-    errorName.style.display = "none";
   } else {
-    console.log("pas ok");
     prenom = false;
-    errorName.style.display = "block";
   }
 });
 
-// Vérifier le nom
-let lastName = false;
+// verification nom
 inputLastName.addEventListener("input", (e) => {
-  if (e.target.value.length >= 2) {
+  predicat = e.target.value.length >= 2;
+  toggleElement("lastName", predicat);
+  if (predicat) {
     lastName = true;
-    console.log("ok !");
-    errorLast.style.display = "none";
   } else {
-    console.log("pas ok");
     lastName = false;
-    errorLast.style.display = "block";
   }
 });
 
-// Vérifier l'email
-let email = false;
+// verification email
 inputEmail.addEventListener("input", (e) => {
-  if (e.target.value.match(/^[\w_-]+@[\w-]+\.[a-z]{2,4}$/i)) {
-    email = true;
-    console.log("ok !");
-    errorEmail.style.display = "none";
+  predicat = e.target.value.match(/^[\w_-]+@[\w-]+\.[a-z]{2,4}$/i);
+  toggleElement("mail", predicat);
+  if (predicat) {
+    mail = true;
   } else {
-    console.log("pas ok");
-    email = false;
-    errorEmail.style.display = "block";
+    mail = false;
   }
 });
 
-// Vérifier l'anniversaire
-let birth = false;
+// verification birthdate
 inputBirth.addEventListener("input", (e) => {
-  console.log(e.target.value);
-  if (e.target.value == "") {
-    birth = false;
-    errorBirth.style.display = "block";
-    console.log("pas ok !");
-  } else {
-    console.log(" ok");
+  predicat = e.target.value !== "";
+  toggleElement("birthday", predicat);
+  if (predicat) {
     birth = true;
-    errorBirth.style.display = "none";
+  } else {
+    birth = false;
   }
 });
 
-// Vérifier le nombre concours
-let quantity = false;
+// verification quantity
 inputQuantity.addEventListener("input", (e) => {
-  if (e.target.value > 0) {
+  predicat = e.target.value >= 0;
+  toggleElement("quantity", predicat);
+  if (predicat) {
     quantity = true;
-    console.log("ok !");
-    errorQuantity.style.display = "none";
   } else {
-    console.log("pas ok");
     quantity = false;
-    errorQuantity.style.display = "block";
   }
 });
 
-// Vérifier les villes
-let city = false;
-radioCity.forEach((btn) => btn.addEventListener("click", cityError));
-function cityError() {
-  if (radioCity.checked) {
-    console.log("pas ok");
-    city = false;
-    errorCity.style.display = "block";
-  } else {
-    console.log(" ok");
-    city = true;
-    errorCity.style.display = "none";
-  }
-}
+// verification city
+radioCity.forEach((btn) =>
+  btn.addEventListener("click", () => {
+    predicat = !radioCity.checked;
+    toggleElement("city", predicat);
+    if (predicat) {
+      city = true;
+    } else {
+      city = false;
+    }
+  })
+);
 
-// Vérifier la checkbox
-let check = false;
-inputCheckbox.addEventListener("click", () => {
-  if (inputCheckbox.checked) {
-    console.log("ok");
-    check = true;
-    errorCheckbox.style.display = "none";
+// Verification condition checkbox
+inputCheckbox.addEventListener("input", (e) => {
+  predicat = inputCheckbox.checked;
+  toggleElement("checkbox", predicat);
+  if (predicat) {
+    checkbox = true;
   } else {
-    console.log("pas ok");
-    check = false;
-    errorCheckbox.style.display = "block";
+    checkbox = false;
   }
 });
 
-// Validation du formulaire
-function validate() {}
-
+// Submit form
 form.addEventListener("submit", function (e) {
   e.preventDefault();
-  if (prenom && lastName && quantity && birth && check && city) {
-    alert("C'est ok !");
+  if (prenom && lastName && mail && birth && quantity && city && checkbox) {
     modalbg.style.display = "none";
     modalbgThanks.style.display = "block";
   } else {
     alert("remplir tous les champs !");
+    errorQuantity.style.display = "block";
+    errorCity.style.display = "block";
   }
 });

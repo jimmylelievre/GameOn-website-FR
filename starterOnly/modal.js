@@ -166,7 +166,26 @@ form.addEventListener("submit", function (e) {
     modalbgThanks.style.display = "block";
   } else {
     alert("remplir tous les champs !");
-    errorQuantity.style.display = "block";
-    errorCity.style.display = "block";
+    if (!prenom) {
+      errorName.style.display = "block";
+    }
+    if (!lastName) {
+      errorLast.style.display = "block";
+    }
+    if (!mail) {
+      errorEmail.style.display = "block";
+    }
+    if (!birth) {
+      errorBirth.style.display = "block";
+    }
+    if (!quantity) {
+      errorQuantity.style.display = "block";
+    }
+    if (!city) {
+      errorCity.style.display = "block";
+    }
+    if (!checkbox) {
+      errorCheckbox.style.display = "block";
+    }
   }
 });

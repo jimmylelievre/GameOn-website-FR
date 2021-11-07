@@ -80,82 +80,46 @@ function launchModal() {
 
 // verification prenom
 inputName.addEventListener("input", (e) => {
-  predicat = e.target.value.length >= 2;
+  prenom = predicat = e.target.value.length >= 2;
   toggleElement("prenom", predicat);
-
-  if (predicat) {
-    prenom = true;
-  } else {
-    prenom = false;
-  }
 });
 
 // verification nom
 inputLastName.addEventListener("input", (e) => {
-  predicat = e.target.value.length >= 2;
+  lastName = predicat = e.target.value.length >= 2;
   toggleElement("lastName", predicat);
-  if (predicat) {
-    lastName = true;
-  } else {
-    lastName = false;
-  }
 });
 
 // verification email
 inputEmail.addEventListener("input", (e) => {
-  predicat = e.target.value.match(/^[\w_-]+@[\w-]+\.[a-z]{2,4}$/i);
+  mail = predicat = e.target.value.match(/^[\w_-]+@[\w-]+\.[a-z]{2,4}$/i);
   toggleElement("mail", predicat);
-  if (predicat) {
-    mail = true;
-  } else {
-    mail = false;
-  }
 });
 
 // verification birthdate
 inputBirth.addEventListener("input", (e) => {
-  predicat = e.target.value !== "";
+  birth = predicat = e.target.value !== "";
   toggleElement("birthday", predicat);
-  if (predicat) {
-    birth = true;
-  } else {
-    birth = false;
-  }
 });
 
 // verification quantity
 inputQuantity.addEventListener("input", (e) => {
-  predicat = e.target.value >= 0;
+  quantity = predicat = e.target.value >= 0;
   toggleElement("quantity", predicat);
-  if (predicat) {
-    quantity = true;
-  } else {
-    quantity = false;
-  }
 });
 
 // verification city
 radioCity.forEach((btn) =>
   btn.addEventListener("click", () => {
-    predicat = !radioCity.checked;
+    city = predicat = !radioCity.checked;
     toggleElement("city", predicat);
-    if (predicat) {
-      city = true;
-    } else {
-      city = false;
-    }
   })
 );
 
 // Verification condition checkbox
 inputCheckbox.addEventListener("input", (e) => {
-  predicat = inputCheckbox.checked;
+  checkbox = predicat = inputCheckbox.checked;
   toggleElement("checkbox", predicat);
-  if (predicat) {
-    checkbox = true;
-  } else {
-    checkbox = false;
-  }
 });
 
 // Submit form

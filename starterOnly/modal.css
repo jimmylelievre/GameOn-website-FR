@@ -535,6 +535,7 @@ input[data-error]::after {
   margin-bottom: 10px;
   margin-left: 40px;
   margin-right: 40px;
+  max-height: 750px;
 }
 .hero-content {
   padding: 51px 67px;
@@ -564,17 +565,18 @@ input[data-error]::after {
   white-space: nowrap;
 }
 .hero-text {
-  width: 130%;
+  width: 430px;
   font-weight: normal;
-  margin-top: 130px;
+  margin-top: 70px;
   padding: 0;
 }
 .btn-signup {
   outline: none;
-  font-size: 25px;
+  font-size: 20px;
   padding: 15px 23px;
   margin: 0;
-  margin-top: 84px;
+  margin-top: 80px;
+  width: 180px;
 }
 .hero-img {
   grid-column: span 8;
@@ -607,6 +609,7 @@ footer {
     box-shadow: unset;
     margin-left: 0px;
     margin-right: 0px;
+    max-height: none;
   }
   .hero-content {
     background: #fff;
